@@ -6,7 +6,7 @@ ARG USERNAME=vscode
 ARG USER_GROUP_NAME=workspace
 ARG USER_UID=1000
 ARG USER_GID=1000
-ARG PKG="git vim curl unzip zip sudo"
+ARG PKG="git vim curl unzip zip sudo mysql-client"
 
 # 以降の RUN コマンドで bash を使用
 SHELL ["/bin/bash", "-c"]
