@@ -1,0 +1,26 @@
+# Docker Compose のバージョンを指定
+version: "3.9"
+
+services:
+  # "workspace" という名前のサービスを定義
+  workspace:
+    # コンテナの名前を環境変数 `PROJECT_NAME` に基づいて設定。デフォルトは "default-workspace"
+    container_name: ${PROJECT_NAME:-default}-workspace
+
+    build:
+      # Dockerfile と関連ファイルが置かれているディレクトリを指定
+      context: ./docker/workspace
+
+      # Dockerfile のビルド時に渡す引数。デフォルト値も設定されている
+      args:
+        USERNAME: ${USERNAME:-vscode}
+        USER_GROUP_NAME: ${USER_GROUP_NAME:-workspace}
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
+
+    # コンテナ内で TTY (端末) を有効にする
+    tty: true
+
+    # ホストとコンテナ間でディレクトリを共有。ホストの1階層上のディレクトリをコンテナ内の `/home/${USERNAME:-vscode}/workspace` としてマウント
+    volumes:
+      - ../:/home/${USERNAME:-vscode}/workspace:cached
