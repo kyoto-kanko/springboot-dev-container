@@ -1,0 +1,30 @@
+{
+    // "workspace" という名前のリモート開発環境の設定を示す
+    "name": "workspace",
+
+    // 使用される Docker Compose ファイルのリスト。この場合は "docker-compose.yml" というファイルを使用
+    "dockerComposeFile": ["docker-compose.yml"],
+
+    // "workspace" という名前のサービスを Docker Compose で実行
+    "service": "workspace",
+
+    // コンテナ内の VS Code のワークスペースのディレクトリを示す
+    "workspaceFolder": "/home/vscode/workspace",
+
+    // コンテナ内のリモートユーザー名。この場合は "vscode" というユーザーを使用
+    "remoteUser": "vscode",
+
+    // このリモート環境をシャットダウンする際のアクション。"stopCompose" は Docker Compose を停止することを示す
+    "shutdownAction": "stopCompose",
+
+    // このリモート環境で使用する VS Code の拡張機能のリスト
+    "extensions": [
+		"vscjava.vscode-java-pack",
+		"vscjava.vscode-spring-initializr",
+		"vscjava.vscode-gradle",
+		"eamodio.gitlens",
+		"mosapride.zenkaku",
+		"vscode-icons-team.vscode-icons",
+		"ms-azuretools.vscode-docker"
+	]
+}
